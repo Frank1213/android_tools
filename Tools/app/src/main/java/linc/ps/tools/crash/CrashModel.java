@@ -4,7 +4,6 @@ package linc.ps.tools.crash;
  * Created by Frank on 2016/12/23.
  * 全局异常捕获
  */
-
 public class CrashModel {
     /*
         ************* Crash Log Head ****************
@@ -16,7 +15,6 @@ public class CrashModel {
         App VersionCode    : 0
         ************* Crash Log Head ****************
         */
-
     private String DeviceManufacturer;
     private String DeviceModel;
     private String AndroidVersion;
