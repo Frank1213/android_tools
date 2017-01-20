@@ -15,22 +15,17 @@ import linc.ps.tools.base.MyApplication;
  * 声音文件-->用于播放提示语
  */
 public class SoundPoolUtils {
-
     int streamVolume;// 音效的音量
     private SoundPool soundPool;// 定义SoundPool 对象
     private HashMap<Integer, Integer> soundPoolMap;// 定义HASH表
-
-
     //获取单例
     public static SoundPoolUtils getInstance(){
         return SoundPoolUtils.SingletonHolder.INSTANCE;
     }
-
-    //在访问HttpMethods时创建单例
+    //在访问SoundPoolUtils时创建单例
     private static class SingletonHolder{
         private static final SoundPoolUtils INSTANCE = new SoundPoolUtils();
     }
-
     // 构造方法私有
     private SoundPoolUtils() {
         if (soundPool == null){
@@ -44,20 +39,16 @@ public class SoundPoolUtils {
             loadallSfx();
         }
     }
-
     public void loadSfx(int raw, int ID) {
-        // 把资源中的音效加载到指定的ID(播放的时候就对应到这个ID播放就行了)
+        // 把资源中的音效加载到指定的ID(播放的时候就对应到这个ID播放就行了),MyApplication是全局上下文
         soundPoolMap.put(ID, soundPool.load(MyApplication.getContext(), raw, ID));
     }
-
     /**
      * play(1, 0); // 默认,警告提示音
-     * play(2, 0); // 成功弹出提示音
      */
     public void play(int sound, int uLoop) {
         soundPool.play(soundPoolMap.get(sound), streamVolume, streamVolume, 1, uLoop, 1f);
     }
-
     public void loadallSfx(){
         // 先做特殊判断
         String where = "四川";
